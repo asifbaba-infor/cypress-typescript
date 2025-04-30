@@ -1,17 +1,17 @@
-name: Cypress Typescript Tests
+name: Cypress Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  test:
+  cypress-run:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        containers: [1, 2,3,4] # Split across 4 parallel jobs
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
-        run: npx cypress run
+      - name: Run Cypress in parallel
+        run: |
+          npx cypress run --record --parallel --ci-build-id ${{ github.run_id }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
