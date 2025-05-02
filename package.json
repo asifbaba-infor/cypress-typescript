@@ -4,14 +4,21 @@
   "description": "Tutorial",
   "main": "index.js",
   "scripts": {
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "test_scripts": "npx cypress run",
+    "posttest": "start '' 'cypress/reports/mochawesome/index.html'",
+    "headed_test_scripts": "npx cypress run --headed",
+    "test_scripts_headed": "npm run test_scripts -- --headed",
+    "test_reports_mochawesome": "npx cypress run --reporter mochawesome",
+    "chromeTest": "npm run test_scripts --browser chrome --headed",
+    "recordDashBoardTest": "npx cypress run --record --key 6e4effac-1c5e-43cf-98e1-94ff167facca",
+    "pacticeSpec": "npm run test_scripts -- --spec \"cypress/e2e/Practice/*\" "
   },
   "author": "Asif",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^14.3.1",
     "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "mocha": "^11.1.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^5.0.0",
