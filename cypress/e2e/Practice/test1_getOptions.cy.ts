@@ -1,6 +1,6 @@
 describe('cy.get() Options', () => {
 
-    it('First Tc: Enter some cy.get() options(object)', () => {
+    it('First Tc: Enter Some cy.get() options(object)', () => {
         cy.visit('https://qavbox.github.io/demo/signup/')
 
         //logs are by default visible here in Cypress Test runner 
