@@ -3,7 +3,7 @@ describe('cy.get() Options', () => {
     it('First Tc: Enter Some cy.get() options(object)', () => {
         cy.visit('https://qavbox.github.io/demo/signup/')
 
-        //logs are by default visible here in Cypress Test runner 
+        //logs are by default visible here in the Cypress Test runner 
         cy.get('#username').type("User A")
 
         //Disabling logs in Cypress Test runner 
